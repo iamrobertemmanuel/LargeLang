@@ -1,76 +1,46 @@
 # Local Multimodal AI Chat
 ## Getting Started
 
-You can follow my [YouTube-Video](https://youtu.be/eNwvAdem4vo) on setting up the repository on Linux or Windows.
+To get started with Local Multimodal AI Chat, follow these simple steps:
 
-To get started with Local Multimodal AI Chat, clone the repository and follow these simple steps:
+### Prerequisites
 
-### Easiest and Preferred Method: Docker Compose
-1. **Set model save path**: Line 21 in the docker-compose.yml file
+1. **Python**: Python 3.8 or higher is required
+2. **Ollama**: Install [Ollama](https://ollama.com/download) for your platform
 
-2. **Enter command in terminal**: ```docker compose up```
-   
-   Note: If you don't have a GPU, you can remove the deploy section from the docker compose file.
+### Installation and Setup
 
-3. **Optional**: 
-   - Check the config.yaml file and change accordingly to your needs.
-   - Place your user_image.png and/or bot_image.png inside the chat_icons folder and remove the old ones. 
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/Leon-Sander/Local-Multimodal-AI-Chat.git
+   cd Local-Multimodal-AI-Chat
+   ```
 
-4. **Open the app**: Open [0.0.0.0:8501](http://0.0.0.0:8501) in the Browser
+2. **Run the setup script**:
+   ```bash
+   python setup.py
+   ```
+   This will:
+   - Install all required dependencies
+   - Check if Ollama is running
+   - Initialize the database
 
-5. **Pull Models**: Go to https://ollama.com/library and choose the models you want to use. Enter ```/pull MODEL_NAME``` in the chat bar. 
-You need one embedding model e.g. [nomic-embed-text](https://ollama.com/library/nomic-embed-text) to embed pdf files (change embedding model in config if you choose another). You also need a model which undertands 
-images e.g. [llava](https://ollama.com/library/llava) 
+3. **Start the application**:
+   ```bash
+   streamlit run app.py
+   ```
 
-6. **Optional**: 
-   - Check the config.yaml file and change accordingly to your needs.
-   - Place your user_image.png and/or bot_image.png inside the chat_icons folder and remove the old ones. 
+4. **Pull Required Models**: 
+   - Open [localhost:8501](http://localhost:8501) in your browser
+   - Go to https://ollama.com/library and choose the models you want to use
+   - Enter `/pull MODEL_NAME` in the chat bar
+   - You need:
+     - One embedding model (e.g. [nomic-embed-text](https://ollama.com/library/nomic-embed-text)) for PDF files
+     - One model that understands images (e.g. [llava](https://ollama.com/library/llava))
 
-### Recommendation for Windows
-Using ollama docker container results in very slow loading times for the models due to system calls being translated between two kernels. Installing Ollama locally works best here.
-
-
-1. **Install [Ollama](https://ollama.com/download) desktop**
-
-2. **Change Docker Compose file**: remove docker-compose.yml and rename docker-compose_without_ollama.yml to docker-compose.yml
-
-3. **Change Ollama Base URL in config.yaml**: Use line 4 in the config.yaml file and remove line 3
-
-3. **Enter command in terminal**: ```docker compose up```
-
-4. **Open the app**: Open [0.0.0.0:8501](http://0.0.0.0:8501) in the Browser
-
-5. **Pull Models**: Go to https://ollama.com/library and choose the models you want to use. Enter ```/pull MODEL_NAME``` in the chat bar. 
-You need one embedding model e.g. [nomic-embed-text](https://ollama.com/library/nomic-embed-text) to embed pdf files (change embedding model in config if you choose another). You also need a model which undertands 
-images e.g. [llava](https://ollama.com/library/llava) 
-
-6. **Optional**: 
-   - Check the config.yaml file and change accordingly to your needs.
-   - Place your user_image.png and/or bot_image.png inside the chat_icons folder and remove the old ones. 
-
-### Complete Manual Install
-
-1. **Install [Ollama](https://github.com/ollama/ollama)**
-
-2. **Create a Virtual Environment**: I am using Python 3.10.12
-
-3. **Install Requirements**:
-   - ```pip install --upgrade pip```
-   - ```pip install -r requirements.txt```
-   - ```pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu```   
-
-4. **Enter commands in terminal**: 
-   1. ```python3 database_operations.py``` This will initialize the sqlite database for the chat sessions.
-   2. ```streamlit run app.py```
-
-5. **Pull Models**: Go to https://ollama.com/library and choose the models you want to use. Enter ```/pull MODEL_NAME``` in the chat bar. 
-You need one embedding model e.g. [nomic-embed-text](https://ollama.com/library/nomic-embed-text) to embed pdf files and one model which undertands 
-images e.g. [llava](https://ollama.com/library/llava) 
-
-6. **Optional**: 
-   - Check the config.yaml file and change accordingly to your needs.
-   - Place your user_image.png and/or bot_image.png inside the chat_icons folder and remove the old ones. 
-
+5. **Optional Configuration**: 
+   - Check the `config.yaml` file and adjust settings to your needs
+   - Place your custom `user_image.png` and/or `bot_image.png` inside the `chat_icons` folder
 
 ## Overview
 
@@ -78,7 +48,7 @@ Local Multimodal AI Chat is a multimodal chat application that integrates variou
 
 The application has been enhanced with the Ollama server and the OpenAI API, boosting its functionality and performance. You can find a detailed tutorial on the development of this repository on my [youtube channel](https://youtu.be/CUjO8b6_ZuM). While significant advancements have been made, the project is still open to further development and refinement.
 
-I welcome contributions of all forms. Whether you’re introducing new features, optimizing the code, or correcting bugs, your participation is valued. This project thrives on community collaboration and aims to serve as a robust resource for those interested in the practical application of multimodal AI technologies.
+I welcome contributions of all forms. Whether you're introducing new features, optimizing the code, or correcting bugs, your participation is valued. This project thrives on community collaboration and aims to serve as a robust resource for those interested in the practical application of multimodal AI technologies.
 
 
 ## Features

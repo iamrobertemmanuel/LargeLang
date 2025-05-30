@@ -1,8 +1,14 @@
-ollama:
-  embedding_model: "nomic-embed-text"
-  base_url: http://ollama:11434 # with ollama docker container
-  #base_url: http://host.docker.internal:11434 # with ollama local install instead of docker container on Windows
-  #base_url: http://localhost:11434 # with a complete manual install on linux
+gemini:
+  api_key: "AIzaSyByHOCjnEjY1cWD7WQfR9WWu3xCfVD4GVc"  # Gemini API key
+  # Available models to try:
+  model: "gemini-2.0-flash"  # Primary model
+  vision_model: "gemini-pro-vision"  # For images
+  embedding_model: "embedding-001"  # For embeddings
+  # Other models to try:
+  # - gemini-pro
+  # - gemini-pro-vision
+  # - gemini-ultra
+  # - gemini-ultra-vision
 
 whisper_model: "openai/whisper-small" # choose from here https://huggingface.co/collections/openai/whisper-release-6501bba2cf999715fd953013
 
@@ -11,3 +17,11 @@ chromadb:
   collection_name: "pdfs"
 
 chat_sessions_database_path: "./chat_sessions/chat_sessions.db"
+
+openai:
+  api_key: ""
+  model: "gpt-3.5-turbo"
+
+ollama:
+  base_url: "http://localhost:11434"
+  model: "llama2"
