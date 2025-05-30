@@ -11,9 +11,10 @@ import io
 load_dotenv()
 config = load_config()
 
-# Configure Gemini
+# Configure Gemini with API key from Streamlit secrets or environment
+api_key = st.secrets.get("GEMINI_API_KEY") or os.getenv("GEMINI_API_KEY") or config["gemini"]["api_key"]
 genai.configure(
-    api_key=config["gemini"]["api_key"],
+    api_key=api_key,
     transport="rest"
 )
 
@@ -96,9 +97,12 @@ class OpenAIChatAPIHandler:
             "stream": False
         }
 
+        # Get OpenAI API key from Streamlit secrets or environment
+        api_key = st.secrets.get("OPENAI_API_KEY") or os.getenv("OPENAI_API_KEY") or config["openai"]["api_key"]
+        
         headers = {
             "Content-Type": "application/json",
-            "Authorization": f"Bearer {os.getenv('OPENAI_API_KEY')}"
+            "Authorization": f"Bearer {api_key}"
         }
 
         response = requests.post(

@@ -1,5 +1,5 @@
 gemini:
-  api_key: "AIzaSyByHOCjnEjY1cWD7WQfR9WWu3xCfVD4GVc"  # Gemini API key
+  api_key: ${GEMINI_API_KEY}  # Will be loaded from environment/secrets
   # Available models to try:
   model: "gemini-2.0-flash"  # Primary model
   vision_model: "gemini-pro-vision"  # For images
@@ -19,7 +19,7 @@ chromadb:
 chat_sessions_database_path: "./chat_sessions/chat_sessions.db"
 
 openai:
-  api_key: ""
+  api_key: ${OPENAI_API_KEY}  # Will be loaded from environment/secrets
   model: "gpt-3.5-turbo"
 
 ollama:
